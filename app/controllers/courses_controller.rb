@@ -1,20 +1,20 @@
 class CoursesController < ApplicationController
-    before_action :set_course, only: [:show]
+  before_action :set_course, only: [:show]
 
-    def index
-        courses = Course.all 
-        render json: courses
-    end
+  def index
+    courses = Course.all 
+    render json: courses
+  end
 
-    def show
-        render json: @course
-    end
+  def show
+    render json: @course
+  end
 
-    # TODO: Remaining rest actions
+  # TODO: Remaining rest actions
 
-    private
+  private
 
-    def set_course
-        @course = Course.find(params[:id])
-    end
+  def set_course
+    @course = Course.find(params[:id])
+  end
 end

@@ -1,3 +1,3 @@
-class Course < ApplicationRecord
-    has_many :rooms
+class Course < ApplicationRecord 
+  has_many :rooms
 end
