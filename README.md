@@ -10,7 +10,13 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 
 * GET `/courses` - get the list of all courses
 
-* Get `/courses/:id` - get a course by it's `:id`
+* GET `/courses/:id` - get a course by it's `:id`
+
+* GET `/courses/:course_id/rooms` - get all rooms that belong to a course
+
+* GET `/courses/:course_id/rooms/:id` - get a specific room that belongs to a course. `:id` is a room's primary key in the database
+
+You can also run `rake routes` to see a more complete list of all available routes.
 
 ## Setup
 

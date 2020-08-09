@@ -17,12 +17,12 @@ end
                          professor: Faker::Name.name,
                          notice_board: Faker::Lorem.paragraph)
 
-  5.times do
+  5.times do |room_n|
     course.rooms.create(url: 'https://example.com',
                         capacity: 50,
                         occupants: rand(50),
                         start_time: 1.day.from_now,
                         end_time: 1.day.from_now + 50.minutes,
-                        purpose: "Lecture #{n}")
+                        purpose: "Lecture #{room_n}")
   end
 end
