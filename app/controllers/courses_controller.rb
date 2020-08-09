@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show]
 
   def index
-    courses = Course.all 
+    courses = Course.all
     render json: courses
   end
 

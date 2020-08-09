@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class RoomsController < ApplicationController
-  before_action :set_course, only: [:index, :show]
-  
+  before_action :set_course, only: %i[index show]
+
   def index
     rooms = @course.rooms
     render json: rooms
