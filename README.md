@@ -1,6 +1,6 @@
 # README
 
-This is the backend for [ZoomMate](gifted-galileo-517037.netlify.app/) which is made for UIUC 2020 [HackThis](https://acm.illinois.edu/hackthis).
+This is the backend for [ZoomMate](http://gifted-galileo-517037.netlify.app/) which is made for UIUC 2020 [HackThis](https://acm.illinois.edu/hackthis).
 
 You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 
@@ -14,7 +14,19 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 
 * GET `/courses/:course_id/rooms` - get all rooms that belong to a course
 
-* GET `/courses/:course_id/rooms/:id` - get a specific room that belongs to a course. `:id` is a room's primary key in the database
+* GET `/courses/:course_id/rooms/:id` - get a specific room that belongs to a course. 
+  `:id` is a room's primary key in the database
+  
+* POST `/courses` with a JSON body to create a course
+```json
+{
+	"course": {
+		"name": "CS199 IKP",
+		"professor": "Geoffery Challen",
+		"notice_board": "Lecture WF 2pm-330pm"
+	}
+}
+```
 
 You can also run `rake routes` to see a more complete list of all available routes.
 
