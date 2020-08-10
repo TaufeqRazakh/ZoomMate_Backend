@@ -37,7 +37,16 @@ email, password, password_confirmation to register a user
   "password_confirmation": "password"
 }
 ```
-* ~~* POST /auth/sign_in with params - email, password to sign in registered user~~
+keep returned header
+ 
+* POST `/auth/sign_in` with params - email, password to sign in registered user
+```json
+{
+  "email": "test@email.com",
+  "password": "password",
+}
+```
+keep returned header
 
 * DELETE `/auth/sign_out` with headers from user register or sign in
 
