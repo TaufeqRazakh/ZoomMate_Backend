@@ -28,7 +28,8 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 }
 ```
 
-* POST `/auth` with a JSON bosy to create a user
+* POST `/auth` with a params - 
+email, password, password_confirmation to register a user
 ```json
 {
   "email": "test@email.com",
@@ -36,6 +37,9 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
   "password_confirmation": "password"
 }
 ```
+* ~~* POST /auth/sign_in with params - email, password to sign in registered user~~
+
+* DELETE `/auth/sign_out` with headers from user register or sign in
 
 You can also run `rake routes` to see a more complete list of all available routes.
 
