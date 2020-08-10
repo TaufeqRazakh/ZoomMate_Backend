@@ -28,6 +28,15 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 }
 ```
 
+* POST `/auth` with a JSON bosy to create a user
+```json
+{
+  "email": "test@email.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+```
+
 You can also run `rake routes` to see a more complete list of all available routes.
 
 ## Setup

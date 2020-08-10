@@ -28,6 +28,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Use faker for fake data generation
 gem 'faker'
 
+# Use token based authentication with device token auth
+gem 'devise_token_auth'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
