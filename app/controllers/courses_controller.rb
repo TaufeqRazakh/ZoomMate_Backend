@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
     # TODO: set_user by token
     @user = User.find(params[:user_id])
     signup = Signup.create(user: @user, course: @course)
-    render json: signup
+    render json: @user.courses
   end
 
   private
