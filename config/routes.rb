@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :courses, only: %i[index show create] do
     resources :rooms, only: %i[index show]
   end
+  post 'courses/:id/enroll', to: 'courses#enroll'
   resources :users, only: %i[index show]
   get 'users/:id/courses', to: 'users#courses'
   get 'users/:id/available_rooms', to: 'users#available_rooms'

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show]
+  before_action :set_course, only: [:show, :enroll]
 
   def create
     course = Course.new(course_params)
     if course.save
-      render :show, status: :created, location: course
+      render json: course, status: :created, location: course
     else
       render json: course.errors, status: :unprocessable_entity
       # TODO: Test this
@@ -23,6 +23,13 @@ class CoursesController < ApplicationController
   end
 
   # TODO: Remaining rest actions
+
+  def enroll
+    # TODO: set_user by token
+    @user = User.find(params[:user_id])
+    signup = Signup.create(user: @user, course: @course)
+    render json: signup
+  end
 
   private
 
