@@ -23,15 +23,62 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 
 * GET `/user/:id/available_rooms `which basically shows all the rooms that can be visible to the user by Course
   
-* POST `/courses` with a JSON body to create a course
+* POST `/courses` with a JSON body to create a course and returns the created course info in the db
 ```json
 {
 	"course": {
-		"name": "CS199 IKP",
-		"professor": "Geoffery Challen",
-		"notice_board": "Lecture WF 2pm-330pm"
+		"name": "CS478 Elixir",
+		"professor": "Harsh Deep",
+		"notice_board": "Lecture WF 12-2pm"
 	}
 }
+```
+which returns
+```json
+{
+  "id": 42,
+  "name": "CS478 Elixir",
+  "professor": "Harsh Deep",
+  "notice_board": "Lecture WF 12-2pm",
+  "created_at": "2020-08-12T21:35:41.558Z",
+  "updated_at": "2020-08-12T21:35:41.558Z"
+}
+```
+
+* POST `/courses/:id/enroll` with a JSON body that has the `user_id` and returns all courses the user has
+```json
+{
+	"user_id": 1
+}
+```
+which returns
+```json
+[
+  {
+    "id": 1,
+    "name": "CS 125",
+    "professor": "Geoff Challen",
+    "notice_board": "Lectures every MWF 11am",
+    "created_at": "2020-08-09T11:22:02.805Z",
+    "updated_at": "2020-08-09T11:22:02.805Z"
+  },
+  {
+    "id": 2,
+    "name": "MATH 20",
+    "professor": "Suzie Macejkovic I",
+    "notice_board": "Exercitationem itaque maxime. Neque ut et. Delectus veritatis et.",
+    "created_at": "2020-08-09T11:22:02.911Z",
+    "updated_at": "2020-08-09T11:22:02.911Z"
+  },
+  {
+    "id": 40,
+    "name": "CS110 Ruby",
+    "professor": "Harsh Deep",
+    "notice_board": "Lecture WF 12-2pm",
+    "created_at": "2020-08-12T19:55:39.292Z",
+    "updated_at": "2020-08-12T19:55:39.292Z"
+  }
+]
 ```
 
 * POST `/auth` with a params - 
