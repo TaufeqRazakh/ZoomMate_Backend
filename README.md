@@ -17,6 +17,12 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 * GET `/courses/:course_id/rooms/:id` - get a specific room that belongs to a course. 
   `:id` is a room's primary key in the database
   
+* GET `/user/:id` - that shows the user info
+
+* GET `/user/:id/courses` - shows which courses they're in 
+
+* GET `/user/:id/available_rooms `which basically shows all the rooms that can be visible to the user by Course
+  
 * POST `/courses` with a JSON body to create a course
 ```json
 {
