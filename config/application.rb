@@ -43,6 +43,8 @@ module ZoomMateApi
       end
     end
 
+    config.middleware.insert_before Warden::Manager, Rack::Cors
+
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
