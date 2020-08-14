@@ -6,12 +6,12 @@ run Rails.application
 
 require 'rack/cors'
 
-use Rack::Cors do
-  allow do
-    origins '*'
-    resource '*',
-             :headers => :any,
-             :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-             :methods => [:get, :post, :options, :delete, :put]
-  end
-end
+# use Rack::Cors do
+#   allow do
+#     origins '*'
+#     resource '*',
+#              :headers => :any,
+#              :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+#              :methods => [:get, :post, :options, :delete, :put]
+#   end
+# end
