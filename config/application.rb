@@ -33,17 +33,14 @@ module ZoomMateApi
 #       'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
     }
 
-    config.middleware.use Rack::Cors do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*',
-                 headers: :any,
-                 expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-                 methods: [:get, :post, :options, :delete, :put]
+                 :headers => :any, :methods => [:get, :post, :options],
+                 expose: ['access-token', 'uid', 'client']
       end
     end
-
-    config.middleware.insert_before Warden::Manager, Rack::Cors
 
 
     # Only loads a smaller set of middleware suitable for API only apps.
