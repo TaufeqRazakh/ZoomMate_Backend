@@ -37,7 +37,7 @@ module ZoomMateApi
       allow do
         origins '*'
         resource '*',
-                 :headers => :any, :methods => [:get, :post, :options],
+                 :headers => :any, headers: :any, :methods => [:get, :post, :patch, :put],
                  expose: ['access-token', 'uid', 'client']
       end
     end
