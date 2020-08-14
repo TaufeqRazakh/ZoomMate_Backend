@@ -31,7 +31,7 @@ module ZoomMateApi
                  methods: [:get, :post, :options, :delete, :put]
       end
     end
-    
+
     # Initialize configuration defaults for originally generated Rails version.
 #     config.load_defaults 6.0
 #
