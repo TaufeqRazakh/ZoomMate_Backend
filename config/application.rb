@@ -33,6 +33,16 @@ module ZoomMateApi
 #       'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
     }
 
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+                 headers: :any,
+                 expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                 methods: [:get, :post, :options, :delete, :put]
+      end
+      end
+
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
