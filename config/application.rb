@@ -41,7 +41,7 @@ module ZoomMateApi
                  expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
                  methods: [:get, :post, :options, :delete, :put]
       end
-      end
+    end
 
 
     # Only loads a smaller set of middleware suitable for API only apps.
