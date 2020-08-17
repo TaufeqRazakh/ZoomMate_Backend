@@ -15,6 +15,11 @@ ActiveRecord::Schema.define(version: 2020_08_16_105338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "administration", id: false, force: :cascade do |t|
+    t.bigint "instructor_id", null: false
+    t.bigint "course_id", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "professor"
@@ -22,25 +27,32 @@ ActiveRecord::Schema.define(version: 2020_08_16_105338) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "students_id"
+    t.bigint "courses_id"
+    t.index ["courses_id"], name: "index_enrollments_on_courses_id"
+    t.index ["students_id"], name: "index_enrollments_on_students_id"
+  end
+
   create_table "instructors", force: :cascade do |t|
     t.bigint "user_id"
     t.index ["user_id"], name: "index_instructors_on_user_id"
+  end
+
+  create_table "registers", force: :cascade do |t|
+    t.bigint "instructors_id"
+    t.bigint "courses_id"
+    t.index ["courses_id"], name: "index_registers_on_courses_id"
+    t.index ["instructors_id"], name: "index_registers_on_instructors_id"
   end
 
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "course_id", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.text "notice_board"
     t.text "i_cal"
     t.index ["course_id"], name: "index_rooms_on_course_id"
-  end
-
-  create_table "signup", id: false, force: :cascade do |t|
-    t.bigint "student_id", null: false
-    t.bigint "course_id", null: false
   end
 
   create_table "students", force: :cascade do |t|
