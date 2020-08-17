@@ -15,7 +15,7 @@ end
 15.times do |n|
   course = Course.create(name: "MATH 2#{n}",
                          professor: Faker::Name.name,
-                         notice_board: Faker::Lorem.paragraph)
+                         )
 
   5.times do |room_n|
     course.rooms.create(url: 'https://example.com',
@@ -23,6 +23,9 @@ end
                         occupants: rand(50),
                         start_time: 1.day.from_now,
                         end_time: 1.day.from_now + 50.minutes,
-                        purpose: "Lecture #{room_n}")
+                        purpose: "Lecture #{room_n}",
+                        notice_board: Faker::Lorem.paragraph)
   end
 end
+
+# TODO test self join with @user.student and @user.instructor

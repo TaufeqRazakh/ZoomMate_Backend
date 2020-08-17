@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :students, class_name: "User",
+                      foreign_key: "instructor_id"
+  belongs_to :instructor, class_name: "User", optional: true                      
+
   has_many :signups
   has_many :courses, through: :signups
-  
+
 end
