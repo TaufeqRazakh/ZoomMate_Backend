@@ -8,8 +8,9 @@ class StudentsController < ApplicationController
 
   def create
     Student.create!(user_id: @student.id)
-    render json: {message: "Successfully created user"}, status: :ok
+    respond_with_json_message("Successfully created student", :created)
   end
+
 
   private
     def student_params
