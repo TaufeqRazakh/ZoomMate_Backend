@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   end
   
   private
-  def course_params
-    params.permit(:name, :professor)
-  end
+    def course_params
+      params.require(:course).permit(:name, :professor)
+    end
 end
