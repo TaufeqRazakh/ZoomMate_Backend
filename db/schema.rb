@@ -15,11 +15,6 @@ ActiveRecord::Schema.define(version: 2020_08_16_105338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "administration", id: false, force: :cascade do |t|
-    t.bigint "instructor_id", null: false
-    t.bigint "course_id", null: false
-  end
-
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "professor"

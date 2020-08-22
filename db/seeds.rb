@@ -1,8 +1,10 @@
 first_course = Course.create(name: 'CS 125',
-                             professor: 'Geoff Challen',
-                             notice_board: 'Lectures every MWF 11am')
+                             professor: 'Geoff Challen')
 
-10.times do |n|
+second_course = Course.create(name: 'CSCI 596',
+                            professor: 'Aiichiro Nakano')
+
+3.times do |n|
   first_course.rooms.create(url: 'https://example.com',
                             capacity: 5,
                             occupants: 3,
