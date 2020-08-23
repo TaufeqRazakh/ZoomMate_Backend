@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 2020_08_16_105338) do
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.bigint "students_id"
-    t.bigint "courses_id"
-    t.index ["courses_id"], name: "index_enrollments_on_courses_id"
-    t.index ["students_id"], name: "index_enrollments_on_students_id"
+    t.bigint "student_id"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 2020_08_16_105338) do
   end
 
   create_table "registers", force: :cascade do |t|
-    t.bigint "instructors_id"
-    t.bigint "courses_id"
-    t.index ["courses_id"], name: "index_registers_on_courses_id"
-    t.index ["instructors_id"], name: "index_registers_on_instructors_id"
+    t.bigint "instructor_id"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_registers_on_course_id"
+    t.index ["instructor_id"], name: "index_registers_on_instructor_id"
   end
 
   create_table "rooms", force: :cascade do |t|

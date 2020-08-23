@@ -4,6 +4,7 @@ first_course = Course.create(name: 'CS 125',
 second_course = Course.create(name: 'CSCI 596',
                             professor: 'Aiichiro Nakano')
 
+third_course = Course.create(name: 'MASC')
 3.times do |n|
   first_course.rooms.create(url: 'https://example.com',
                             capacity: 5,
