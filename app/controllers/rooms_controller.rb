@@ -7,13 +7,14 @@ class RoomsController < ApplicationController
   end
 
   def create
-    course = Course.find(:course_id)
-    course.rooms.create!(room_params)
-    respond_with_json_message("Succesfully created #{room.id} for #{course.name}", :created)
+    course = Course.find(params[:course_id])
+    room = course.rooms.create!(notice_board: params[:notice_board], i_cal: params[:i_cal])
+    respond_with_json_message("Succesfully created room #{room.id} for #{course.name}", :created)
   end
 
   private
     def room_params
-      params.require(:room).permit(:course_id, :notice_board, :i_cal)
+      puts params.inspect
+      params.require(:room).permit(:notice_board, :i_cal)
     end
 end
