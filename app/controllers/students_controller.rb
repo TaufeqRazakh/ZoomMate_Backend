@@ -1,14 +1,14 @@
 class StudentsController < ApplicationController
-  before_action :set_user, only: [:create]
+  before_action :get_matching_user, only: [:create]
 
   def index
-    students = User.all
+    students = Student.all
     render json: students
   end
 
   def create
-    Student.create!(user_id: @student.id)
-    respond_with_json_message("Successfully created student", :created)
+    student Student.create!(user_id: @user.id)
+    respond_with_json_message("Successfully created student with id: #{student.id}", :created)
   end
 
 
@@ -17,8 +17,8 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:email)
     end
 
-    def set_user
-      @student = User.find_by email: params[:email]
+    def get_matching_user
+      @user = User.find_by email: params[:email]
     end
 
 end
