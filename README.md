@@ -6,83 +6,15 @@ You can find the heroku backend [here](https://zmate.herokuapp.com/up).
 
 ## JSON Endpoints
 
+#### Status
+
 * GET `/up` - set if the api is up and get some uptime stats
 
-* GET `/courses` - get the list of all courses
 
-* GET `/courses/:id` - get a course by it's `:id`
+#### Register
 
-* GET `/courses/:course_id/rooms` - get all rooms that belong to a course
-
-* GET `/courses/:course_id/rooms/:id` - get a specific room that belongs to a course. 
-  `:id` is a room's primary key in the database
-  
-* GET `/user/:id` - that shows the user info
-
-* GET `/user/:id/courses` - shows which courses they're in 
-
-* GET `/user/:id/available_rooms `which basically shows all the rooms that can be visible to the user by Course
-  
-* POST `/courses` with a JSON body to create a course and returns the created course info in the db
-```json
-{
-	"course": {
-		"name": "CS478 Elixir",
-		"professor": "Harsh Deep",
-		"notice_board": "Lecture WF 12-2pm"
-	}
-}
-```
-which returns
-```json
-{
-  "id": 42,
-  "name": "CS478 Elixir",
-  "professor": "Harsh Deep",
-  "notice_board": "Lecture WF 12-2pm",
-  "created_at": "2020-08-12T21:35:41.558Z",
-  "updated_at": "2020-08-12T21:35:41.558Z"
-}
-```
-
-* POST `/courses/:id/enroll` with a JSON body that has the `user_id` and returns all courses the user has
-```json
-{
-	"user_id": 1
-}
-```
-which returns
-```json
-[
-  {
-    "id": 1,
-    "name": "CS 125",
-    "professor": "Geoff Challen",
-    "notice_board": "Lectures every MWF 11am",
-    "created_at": "2020-08-09T11:22:02.805Z",
-    "updated_at": "2020-08-09T11:22:02.805Z"
-  },
-  {
-    "id": 2,
-    "name": "MATH 20",
-    "professor": "Suzie Macejkovic I",
-    "notice_board": "Exercitationem itaque maxime. Neque ut et. Delectus veritatis et.",
-    "created_at": "2020-08-09T11:22:02.911Z",
-    "updated_at": "2020-08-09T11:22:02.911Z"
-  },
-  {
-    "id": 40,
-    "name": "CS110 Ruby",
-    "professor": "Harsh Deep",
-    "notice_board": "Lecture WF 12-2pm",
-    "created_at": "2020-08-12T19:55:39.292Z",
-    "updated_at": "2020-08-12T19:55:39.292Z"
-  }
-]
-```
-
-* POST `/auth` with a params - 
-email, password, password_confirmation to register a user
+* POST `/auth` with a params -
+email, password, password_confirmation
 ```json
 {
   "email": "test@email.com",
@@ -91,7 +23,9 @@ email, password, password_confirmation to register a user
 }
 ```
 keep returned header
- 
+
+#### Sign In
+
 * POST `/auth/sign_in` with params - email, password to sign in registered user
 ```json
 {
@@ -101,9 +35,45 @@ keep returned header
 ```
 keep returned header
 
+#### Sign Out
+
 * DELETE `/auth/sign_out` with headers from user register or sign in
 
-You can also run `rake routes` to see a more complete list of all available routes.
+#### Create a student
+
+* POST `/students` with email param that is already registered
+```json
+{
+	"email": "testmail@gmail.com"
+}
+```  
+
+#### Create a course
+
+* POST `/courses` with name and professor as params
+```json
+{
+	"name": "MASC 515",
+	"professor": "Dr. K. Knomura"
+}
+```
+
+#### Enroll student in a course
+* POST `/students/:student_id/enrollments` with course_id as params
+```Json
+{
+	"course_id": "1"
+}
+```
+
+#### Create room for a courses
+* POST `/courses/:course_id/rooms` with notice_board and i-cal as params
+```JSON
+{
+	"notice_board": "Discussion",
+	"i_cal": "{\"vcalendar\":[{\"description\":\"This is an iCal import for fall 2020 classes\",\"prodid\":\"-//University of Southern California//NONSGML myUSC//EN\",\"calscale\":\"GREGORIAN\",\"version\":\"2.0\",\"x-wr-calname\":\"fall 2020 Classes\",\"method\":\"PUBLISH\",\"vtimezone\":[{\"tzid\":\"America/Los_Angeles\",\"daylight\":[{\"tzoffsetfrom\":\"-0800\",\"rrule\":{\"freq\":\"YEARLY\",\"bymonth\":\"3\",\"byday\":\"2SU\"},\"dtstart\":\"20200308T020000\",\"tzname\":\"PDT\",\"tzoffsetto\":\"-0700\"}],\"standard\":[{\"tzoffsetfrom\":\"-0700\",\"rrule\":\"FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\",\"dtstart\":\"20201101T020000\",\"tzname\":\"PST\",\"tzoffsetto\":\"-0800\"}]}],\"vevent\":[{\"created\":\"20200821T205821\",\"uid\":\"20203-30056-1598068701-0@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201209T000000\",\"byday\":\"MO\",\"we\":null},\"exdate\":[[\"20200907T153000\",\"20201125T153000\"],{\"tzid\":\"America/Los_Angeles\"}],\"dtend\":[\"20200824T165000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 596: Scientific Computing and Visualization (Lecture)\",\"dtstart\":[\"20200824T153000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"},{\"created\":\"20200821T205821\",\"uid\":\"20203-30146-1598068701-1@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201209T000000\",\"byday\":\"FR\"},\"exdate\":[[\"20201127T153000\"],{\"tzid\":\"America/Los_Angeles\"}],\"dtend\":[\"20200828T165000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 596: Scientific Computing and Visualization (Discussion)\",\"dtstart\":[\"20200828T153000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"},{\"created\":\"20200821T205821\",\"uid\":\"20203-30100-1598068701-2@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201124T000000\",\"byday\":\"TU\",\"th\":null},\"dtend\":[\"20200818T105000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 455: Introduction to Programming Systems Design (Lecture)\",\"dtstart\":[\"20200818T093000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"},{\"created\":\"20200821T205821\",\"uid\":\"20203-30192-1598068701-3@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201124T000000\",\"byday\":\"FR\"},\"dtend\":[\"20200821T095000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 455: Introduction to Programming Systems Design (Lab)\",\"dtstart\":[\"20200821T080000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"}]}]}"
+}
+```
 
 ## Setup
 
@@ -122,5 +92,3 @@ You can also run `rake routes` to see a more complete list of all available rout
 7. `rake db:seed` - setup development data
 
 8. `rails s` - run the server locally at `localhost:3000`
-
-
