@@ -66,12 +66,135 @@ keep returned header
 }
 ```
 
-#### ~~Create room for a courses~~ 
+#### Create room for a courses
 * POST `/courses/:course_id/rooms` with notice_board and i-cal as params
 ```JSON
 {
 	"notice_board": "Discussion",
-	"i_cal": "{\"vcalendar\":[{\"description\":\"This is an iCal import for fall 2020 classes\",\"prodid\":\"-//University of Southern California//NONSGML myUSC//EN\",\"calscale\":\"GREGORIAN\",\"version\":\"2.0\",\"x-wr-calname\":\"fall 2020 Classes\",\"method\":\"PUBLISH\",\"vtimezone\":[{\"tzid\":\"America/Los_Angeles\",\"daylight\":[{\"tzoffsetfrom\":\"-0800\",\"rrule\":{\"freq\":\"YEARLY\",\"bymonth\":\"3\",\"byday\":\"2SU\"},\"dtstart\":\"20200308T020000\",\"tzname\":\"PDT\",\"tzoffsetto\":\"-0700\"}],\"standard\":[{\"tzoffsetfrom\":\"-0700\",\"rrule\":\"FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\",\"dtstart\":\"20201101T020000\",\"tzname\":\"PST\",\"tzoffsetto\":\"-0800\"}]}],\"vevent\":[{\"created\":\"20200821T205821\",\"uid\":\"20203-30056-1598068701-0@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201209T000000\",\"byday\":\"MO\",\"we\":null},\"exdate\":[[\"20200907T153000\",\"20201125T153000\"],{\"tzid\":\"America/Los_Angeles\"}],\"dtend\":[\"20200824T165000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 596: Scientific Computing and Visualization (Lecture)\",\"dtstart\":[\"20200824T153000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"},{\"created\":\"20200821T205821\",\"uid\":\"20203-30146-1598068701-1@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201209T000000\",\"byday\":\"FR\"},\"exdate\":[[\"20201127T153000\"],{\"tzid\":\"America/Los_Angeles\"}],\"dtend\":[\"20200828T165000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 596: Scientific Computing and Visualization (Discussion)\",\"dtstart\":[\"20200828T153000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"},{\"created\":\"20200821T205821\",\"uid\":\"20203-30100-1598068701-2@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201124T000000\",\"byday\":\"TU\",\"th\":null},\"dtend\":[\"20200818T105000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 455: Introduction to Programming Systems Design (Lecture)\",\"dtstart\":[\"20200818T093000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"},{\"created\":\"20200821T205821\",\"uid\":\"20203-30192-1598068701-3@my.usc.edu\",\"rrule\":{\"freq\":\"WEEKLY\",\"interval\":\"1\",\"until\":\"20201124T000000\",\"byday\":\"FR\"},\"dtend\":[\"20200821T095000\",{\"tzid\":\"America/Los_Angeles\"}],\"transp\":\"OPAQUE\",\"summary\":\"CSCI 455: Introduction to Programming Systems Design (Lab)\",\"dtstart\":[\"20200821T080000\",{\"tzid\":\"America/Los_Angeles\"}],\"dtstamp\":[\"20200821T205821\",{\"tzid\":\"America/Los_Angeles\"}],\"location\":\"Online\",\"sequence\":\"0\"}]}]}"
+	"i_cal": {
+  "vcalendar": [
+    {
+      "description": "This is an iCal import for fall 2020 classes",
+      "prodid": "-//University of Southern California//NONSGML myUSC//EN",
+      "calscale": "GREGORIAN",
+      "version": "2.0",
+      "x-wr-calname": "fall 2020 Classes",
+      "method": "PUBLISH",
+      "vtimezone": [
+        {
+          "tzid": "America/Los_Angeles",
+          "daylight": [
+            {
+              "tzoffsetfrom": "-0800",
+              "rrule": {
+                "freq": "YEARLY",
+                "bymonth": "3",
+                "byday": "2SU"
+              },
+              "dtstart": "20200308T020000",
+              "tzname": "PDT",
+              "tzoffsetto": "-0700"
+            }
+          ],
+          "standard": [
+            {
+              "tzoffsetfrom": "-0700",
+              "rrule": "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU",
+              "dtstart": "20201101T020000",
+              "tzname": "PST",
+              "tzoffsetto": "-0800"
+            }
+          ]
+        }
+      ],
+      "vevent": [
+        {
+          "created": "20200821T205821",
+          "uid": "20203-30056-1598068701-0@my.usc.edu",
+          "rrule": {
+            "freq": "WEEKLY",
+            "interval": "1",
+            "until": "20201209T000000",
+            "byday": "MO",
+            "we": null
+          },
+          "exdate": [
+            [
+              "20200907T153000",
+              "20201125T153000"
+            ],
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "dtend": [
+            "20200824T165000",
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "transp": "OPAQUE",
+          "summary": "CSCI 596: Scientific Computing and Visualization (Lecture)",
+          "dtstart": [
+            "20200824T153000",
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "dtstamp": [
+            "20200821T205821",
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "location": "Online",
+          "sequence": "0"
+        },
+        {
+          "created": "20200821T205821",
+          "uid": "20203-30146-1598068701-1@my.usc.edu",
+          "rrule": {
+            "freq": "WEEKLY",
+            "interval": "1",
+            "until": "20201209T000000",
+            "byday": "FR"
+          },
+          "exdate": [
+            [
+              "20201127T153000"
+            ],
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "dtend": [
+            "20200828T165000",
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "transp": "OPAQUE",
+          "summary": "CSCI 596: Scientific Computing and Visualization (Discussion)",
+          "dtstart": [
+            "20200828T153000",
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "dtstamp": [
+            "20200821T205821",
+            {
+              "tzid": "America/Los_Angeles"
+            }
+          ],
+          "location": "Online",
+          "sequence": "0"
+        }
+      ]
+    }
+  ]
+}
+
 }
 ```
 
