@@ -66,7 +66,7 @@ keep returned header
 }
 ```
 
-#### Create room for a courses
+#### ~~Create room for a courses~~ 
 * POST `/courses/:course_id/rooms` with notice_board and i-cal as params
 ```JSON
 {
