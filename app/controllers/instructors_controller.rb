@@ -8,7 +8,8 @@ class InstructorsController < ApplicationController
 
   def create
     instructor = Instructor.create!(user_id: @user.id)
-    respond_with_json_message("Successfully created instructor with id: #{instructor.id}", :created)
+    respond_with_json_message("Successfully created instructor with id: #{instructor.id}",
+                              :created)
   end
 
   private

@@ -10,7 +10,8 @@ class EnrollmentsController < ApplicationController
     student = Student.find(params[:student_id])
     course = Course.find(params[:course_id])
     Enrollment.create!(student: student, course: course)
-    respond_with_json_message("Succesfully enrolled student #{student.id} into #{course.name}", :created)
+    respond_with_json_message("Successfully enrolled student #{student.id} into #{course.name}",
+                              :created)
   end
 
   private
