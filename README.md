@@ -198,6 +198,15 @@ keep returned header
 }
 ```
 
+#### Get schedules for a student
+* GET `/schedules` with id(student) params
+```JSON
+{
+	"id": "1"
+}
+```
+
+
 ## Setup
 
 1. Install ruby on rails 6. Here is a good [guide](https://gorails.com/setup/ubuntu/18.04) for ruby, git, rails, node, PostgreSQL and all the needed things.

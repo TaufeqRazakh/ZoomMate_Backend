@@ -13,9 +13,6 @@ class InstructorsController < ApplicationController
   end
 
   private
-    def instructor_params
-      params.require(:instructor).permit(:email)
-    end
 
     def get_matching_user
       @user = User.find_by email: params[:email]

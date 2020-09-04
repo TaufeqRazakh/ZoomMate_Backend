@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   private
 
     def room_params
-      puts params.inspect
+      # puts params.inspect
       params.require(:room).permit(:notice_board, :i_cal)
     end
 end
