@@ -2,7 +2,7 @@
 
 This is the backend for [ZoomMate](http://gifted-galileo-517037.netlify.app/) which is made for UIUC 2020 [HackThis](https://acm.illinois.edu/hackthis).
 
-You can find the heroku backend [here](https://zmate.herokuapp.com/up).
+You can find the heroku backend [here](https://zmate2.herokuapp.com/up).
 
 ## JSON Endpoints
 
